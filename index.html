@@ -78,7 +78,8 @@
 </head>
 <body>
 
-<script>
+<script
+    <audio id="gunshotSound" src="RPReplay_Final1725460133.mp3" preload="auto"></audio>
 const DAMAGE_VALUES = {
     Pistol: 50,
     MachineGun: 250,
@@ -106,11 +107,12 @@ class Gun {
 
     Fire() {
         if (this.isCoolingDown) return;
-
         if (this.type === 'Grenade') {
             this.launchGrenade();
         } else {
             this.launchBullet();
+            this.sound.currentTime = 0; // Rewind to the start
+            this.sound.play(); // Play the sound
         }
     }
 
